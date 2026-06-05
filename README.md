@@ -44,14 +44,15 @@ where `k` is considered as an intermediate vertex.
 ## 💻 Python Implementation
 
 ```python
-def AllPaths(cost, n):
-    A = [row[:] for row in cost]
-
+def AllPaths(cost,n):
+    A = [[0 for j in range(n)] for i in range(n)]
+    for i in range(n):
+        for j in range(n):
+            A[i][j] = cost[i][j]
     for k in range(n):
         for i in range(n):
             for j in range(n):
-                A[i][j] = min(A[i][j], A[i][k] + A[k][j])
-
+                A[i][j] = min(A[i][j] , A[i][k]+A[k][j])
     return A
 ```
 
